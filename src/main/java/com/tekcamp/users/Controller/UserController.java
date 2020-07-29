@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tekcamp.users.Dto.UserDto;
+import com.tekcamp.users.Model.Request.UserRequest;
 import com.tekcamp.users.Model.Response.UserResponse;
 import com.tekcamp.users.Service.UserService;
 
@@ -24,7 +26,7 @@ public class UserController {
 	
 	@PostMapping
 	public UserResponse createUser(@RequestBody UserRequest userRequest) {
-		
+		UserDto userDto = new UserDto(); 
 	}
 
 
