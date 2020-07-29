@@ -1,11 +1,17 @@
 package com.tekcamp.users.Service;
 
+import java.util.List;
+
+import com.tekcamp.users.Dto.UserDto;
 import com.tekcamp.users.Model.Response.UserResponse;
 
 public interface UserService {
 
-	void getAllUsers();
+	UserDto createUser(UserDto userDto);
 
-	UserResponse getSingleUser(String userId);
+//	List<UserResponse> getAllUsers();
+//
+//	UserResponse getSingleUser(String userId);
+
 
 }
