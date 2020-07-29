@@ -17,7 +17,7 @@ import com.tekcamp.users.Model.Response.UserResponse;
 import com.tekcamp.users.Service.UserService;
 
 @RestController
-@RequestMapping
+@RequestMapping("users")
 public class UserController {
 
 	private UserService userService; 
@@ -41,12 +41,12 @@ public class UserController {
 	}
 
 
-//	@GetMapping
-//	public List<UserResponse> getAllUsers() {
-//		List<UserResponse> users = userService.getAllUsers(); 
-//		return users; 
-//	}
-//	
+	@GetMapping
+	public List<UserResponse> getAllUsers() {
+		List<UserResponse> responseUsers = userService.getAllUsers(); 
+		return responseUsers; 
+	}
+
 //	@GetMapping(path="/{userId}")
 //	public UserResponse getSingleUser(@PathVariable String userId) {
 //		UserResponse userResponse = userService.getSingleUser(userId); 

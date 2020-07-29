@@ -1,11 +1,15 @@
 package com.tekcamp.users.Service.Implementation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import com.tekcamp.users.Dao.UserRepository;
 import com.tekcamp.users.Dto.UserDto;
 import com.tekcamp.users.Model.UserEntity;
+import com.tekcamp.users.Model.Response.UserResponse;
 import com.tekcamp.users.Service.UserService;
 import com.tekcamp.users.Shared.Utils;
 
@@ -36,6 +40,20 @@ public class UserServiceImplementation implements UserService{
 		BeanUtils.copyProperties(storedUser, returnUser);
 		
 		return returnUser; 
+	}
+
+	@Override
+	public ArrayList<UserResponse> getAllUsers() {
+		
+		ArrayList<UserEntity> users = (ArrayList<UserEntity>) userRepository.findAll(); 
+		ArrayList<UserResponse> userResponseList = new ArrayList<UserResponse>(); 
+		
+		for ( int i = 0; i<users.size(); i++ ) {
+			UserResponse userResponse = new UserResponse(); 
+			BeanUtils.copyProperties(users.get(i), userResponse);
+			userResponseList.add(userResponse); 
+		}
+		return userResponseList;
 	}
 	
 

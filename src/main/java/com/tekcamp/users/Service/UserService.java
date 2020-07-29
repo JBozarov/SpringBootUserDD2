@@ -9,8 +9,8 @@ public interface UserService {
 
 	UserDto createUser(UserDto userDto);
 
-//	List<UserResponse> getAllUsers();
-//
+	List<UserResponse> getAllUsers();
+
 //	UserResponse getSingleUser(String userId);
 
 
