@@ -44,10 +44,19 @@ public class UserController {
 
 	@GetMapping
 	public ArrayList<UserResponse> getAllUsers() {
-		ArrayList<UserResponse> responseUsers = (ArrayList<UserResponse>) userService.getAllUsers(); 
-		return responseUsers; 
+		ArrayList<UserDto> userDtoList = (ArrayList<UserDto>) userService.getAllUsers(); 
+		
+		ArrayList<UserResponse> responseUserList = new ArrayList<UserResponse>(); 
+		UserResponse userResponse = new UserResponse(); 
+		
+		for ( int i = 0; i<userDtoList.size(); i++ ) {
+			BeanUtils.copyProperties(userDtoList.get(i), userResponse);
+			responseUserList.add(userResponse); 
+		}
+		return responseUserList; 
 	}
 
+	
 	@GetMapping(path="/{userId}")
 	public UserResponse getSingleUser(@PathVariable String userId) {
 		UserResponse userResponse = userService.getSingleUser(userId); 

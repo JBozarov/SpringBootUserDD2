@@ -45,17 +45,19 @@ public class UserServiceImplementation implements UserService{
 
 	
 	@Override
-	public ArrayList<UserResponse> getAllUsers() {
+	public ArrayList<UserDto> getAllUsers() {
 		
 		ArrayList<UserEntity> users = (ArrayList<UserEntity>) userRepository.findAll(); 
-		ArrayList<UserResponse> userResponseList = new ArrayList<UserResponse>(); 
+		
+		ArrayList<UserDto> userDtoList = new ArrayList<UserDto>(); 
+		UserDto userDto = new UserDto(); 
 		
 		for ( int i = 0; i<users.size(); i++ ) {
-			UserResponse userResponse = new UserResponse(); 
-			BeanUtils.copyProperties(users.get(i), userResponse);
-			userResponseList.add(userResponse); 
+			BeanUtils.copyProperties(users.get(i), userDto);
+			userDtoList.add(userDto); 
 		}
-		return userResponseList;
+		
+		return userDtoList;
 	}
 
 	
