@@ -11,7 +11,7 @@ public interface UserService {
 
 	List<UserResponse> getAllUsers();
 
-//	UserResponse getSingleUser(String userId);
+	UserResponse getSingleUser(String userId);
 
 
 }

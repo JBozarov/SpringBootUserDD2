@@ -1,5 +1,6 @@
 package com.tekcamp.users.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -42,16 +43,16 @@ public class UserController {
 
 
 	@GetMapping
-	public List<UserResponse> getAllUsers() {
-		List<UserResponse> responseUsers = userService.getAllUsers(); 
+	public ArrayList<UserResponse> getAllUsers() {
+		ArrayList<UserResponse> responseUsers = (ArrayList<UserResponse>) userService.getAllUsers(); 
 		return responseUsers; 
 	}
 
-//	@GetMapping(path="/{userId}")
-//	public UserResponse getSingleUser(@PathVariable String userId) {
-//		UserResponse userResponse = userService.getSingleUser(userId); 
-//		return userResponse; 
-//	}
+	@GetMapping(path="/{userId}")
+	public UserResponse getSingleUser(@PathVariable String userId) {
+		UserResponse userResponse = userService.getSingleUser(userId); 
+		return userResponse; 
+	}
 	
 	
 }

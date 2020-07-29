@@ -25,6 +25,7 @@ public class UserServiceImplementation implements UserService{
 		this.utils = utils; 
 	}
 
+	
 	@Override
 	public UserDto createUser(UserDto userDto) {
 		UserEntity newUser = new UserEntity(); 
@@ -42,6 +43,7 @@ public class UserServiceImplementation implements UserService{
 		return returnUser; 
 	}
 
+	
 	@Override
 	public ArrayList<UserResponse> getAllUsers() {
 		
@@ -54,6 +56,21 @@ public class UserServiceImplementation implements UserService{
 			userResponseList.add(userResponse); 
 		}
 		return userResponseList;
+	}
+
+	
+	
+	@Override
+	public UserResponse getSingleUser(String userId) {
+		ArrayList<UserEntity> users = (ArrayList<UserEntity>) userRepository.findAll();
+		UserResponse userResponse = new UserResponse(); 
+		for ( int i = 0; i<users.size(); i++ ) {
+			if (users.get(i).getUserId().equals(userId)) {
+				BeanUtils.copyProperties(users.get(i), userResponse);
+				return userResponse; 
+			}
+		}
+		return null; 
 	}
 	
 
